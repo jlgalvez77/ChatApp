@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Chat App</string>
+    <string name="nombre_desarrollador">Jose Galvez</string>
+    
+    <string name="Btn_ir_registros">Registrarse</string>
+    <string name="Btn_ir_logeo">Ingresar</string>
+    
+    <string name="R_Et_nombre_usuario">Nombre de usuario</string>
+    <string name="R_Et_email">Correo electrónico</string>
+    <string name="R_Et_password">Contraseña</string>
+    <string name="R_Et_r_password">Repite la contraseña</string>
+    <string name="Btn_registrar">Registrar</string>
+
+    <string name="menu_salir">Cerrar sesión</string>
+    
+</resources>
