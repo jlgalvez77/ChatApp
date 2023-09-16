@@ -24,7 +24,7 @@ class RegistroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
-        supportActionBar?.title = "Registros"
+        //supportActionBar?.title = "Registros"
         InicializarVariables()
 
         Btn_registrar.setOnClickListener(){
@@ -86,6 +86,7 @@ class RegistroActivity : AppCompatActivity() {
                 hashMap["email"] = h_email
                 hashMap["imagen"] = ""
                 hashMap["buscar"] = h_nombre_usuario.lowercase()
+                hashMap["estado"] = "offline"
 
                 reference.updateChildren(hashMap).addOnCompleteListener(){
                     task2->
