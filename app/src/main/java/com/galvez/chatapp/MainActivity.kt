@@ -7,6 +7,7 @@ import android.os.CountDownTimer
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -15,14 +16,27 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.galvez.chatapp.Fragmentos.FragmentoChats
 import com.galvez.chatapp.Fragmentos.FragmentoUsuarios
+import com.galvez.chatapp.Modelo.Usuario
+import com.galvez.chatapp.Perfil.PerfilActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class MainActivity : AppCompatActivity() {
+
+    var reference : DatabaseReference?=null
+    var fireBaseUser : FirebaseUser?=null
+    private lateinit var nombre_usuario : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         InicializarComponentes()
+        ObtenerDato()
     }
 
     fun InicializarComponentes(){
@@ -30,6 +44,10 @@ class MainActivity : AppCompatActivity() {
         val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbarMain)
         setSupportActionBar(toolbar)
         supportActionBar!!.title = ""
+
+        fireBaseUser = FirebaseAuth.getInstance().currentUser
+        reference = FirebaseDatabase.getInstance().reference.child("Usuarios").child(fireBaseUser!!.uid)
+        nombre_usuario = findViewById(R.id.Nombre_usuario)
 
         val tabLayout : TabLayout = findViewById(R.id.TabLayoutMain)
         val viewPager : ViewPager = findViewById(R.id.ViewPagerMain)
@@ -41,6 +59,22 @@ class MainActivity : AppCompatActivity() {
 
         viewPager.adapter = viewPagerAdapter
         tabLayout.setupWithViewPager(viewPager)
+    }
+
+    fun ObtenerDato(){
+        reference!!.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    val usuario : Usuario? = snapshot.getValue(Usuario::class.java)
+                    nombre_usuario.text = usuario!!.getN_Usuario()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
     class ViewPagerAdapter(fragmentManager : FragmentManager):FragmentPagerAdapter(fragmentManager) {
 
@@ -75,6 +109,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
+            R.id.menu_perfil->{
+                val intent = Intent(applicationContext, PerfilActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            R.id.menu_acerca_de->{
+                Toast.makeText(applicationContext, "Acerca de", Toast.LENGTH_SHORT).show()
+                return true
+            }
             R.id.menu_salir->{
                 FirebaseAuth.getInstance().signOut()
                 val intent = Intent(this@MainActivity, Inicio::class.java)
