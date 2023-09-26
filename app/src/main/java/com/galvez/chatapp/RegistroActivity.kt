@@ -88,6 +88,15 @@ class RegistroActivity : AppCompatActivity() {
                 hashMap["buscar"] = h_nombre_usuario.lowercase()
                 hashMap["estado"] = "offline"
 
+                /*Nuevos datos de usurio*/
+                hashMap["nombres"] = ""
+                hashMap["apellidos"] = ""
+                hashMap["edad"] = ""
+                hashMap["profesion"] = ""
+                hashMap["domicilio"] = ""
+                hashMap["telefono"] = ""
+                hashMap["estado"] = "offline"
+
                 reference.updateChildren(hashMap).addOnCompleteListener(){
                     task2->
                     if(task2.isSuccessful){

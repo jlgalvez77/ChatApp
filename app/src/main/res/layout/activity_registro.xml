@@ -17,7 +17,8 @@
         <!-- Nombre de usuario-->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <EditText
                 android:id="@+id/R_Et_nombre_usuario"
                 android:hint="@string/R_Et_nombre_usuario"
@@ -32,8 +33,11 @@
         <!-- Email -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <EditText
                 android:id="@+id/R_Et_email"
                 android:hint="@string/R_Et_email"
                 android:inputType="textEmailAddress"
@@ -49,7 +53,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true">
+            android:layout_marginTop="5dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:passwordToggleEnabled="true">
             <EditText
                 android:id="@+id/R_Et_password"
                 android:hint="@string/R_Et_password"
@@ -66,7 +72,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true">
+            android:layout_marginTop="5dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:passwordToggleEnabled="true">
             <EditText
                 android:id="@+id/R_Et_r_password"
                 android:hint="@string/R_Et_r_password"

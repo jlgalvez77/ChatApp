@@ -29,7 +29,7 @@
     <!--Perfil de Usuario -->
     <string name="P_n_usuario">Nombre de Usuario</string>
     <string name="P_email">Email</string>
-    <string name="P_nombres">Nombres</string>
+    <string name="P_nombres">Nombre</string>
     <string name="P_apellidos">Apellidos</string>
     <string name="P_profesion">Profesión</string>
     <string name="P_domicilio">Domicilio</string>
@@ -37,5 +37,13 @@
     <string name="P__telefono">Teléfono</string>
     <string name="Btn_Guardar">Guardar</string>
 
+    <!-- Editar imagen perfil-->
+    <string name="BtnElegirImagenDe">Elegir Imagen de Perfil</string>
+    <string name="BtnActualizarImagen">Actualizar Imagen</string>
+
+    <!-- Cuadro de dialogo seleccionar imagen de -->
+    <string name="Txt_seleccionar_imagen">Selecciona imagen de: </string>
+    <string name="Btn_abrir_galeria">Galería</string>
+    <string name="Btn_abrir_camara">Cámara</string>
 
 </resources>
